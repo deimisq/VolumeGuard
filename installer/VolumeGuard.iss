@@ -1,5 +1,5 @@
 #define AppName "VolumeGuard"
-#define AppVersion "1.0.2"
+#define AppVersion "1.0.3"
 [Setup]
 AppId={{A1484F55-FF4A-4674-8B58-01D6C5A8D311}
 AppName={#AppName}

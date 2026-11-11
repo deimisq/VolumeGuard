@@ -23,7 +23,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -InnoSetupCompiler 'C:\Tools\Inno Setup 6\ISCC.exe'
 ```
 
-Output: `dist/VolumeGuard-Setup-1.0.2.exe`. Run as administrator. Installation creates the VolumeGuard service and protects `%ProgramData%\VolumeGuard`; uninstall stops/removes the service. The panel requires UAC to change its configuration.
+Output: `dist/VolumeGuard-Setup-1.0.3.exe`. Run as administrator. Installation creates the VolumeGuard service and protects `%ProgramData%\VolumeGuard`; uninstall stops/removes the service. The panel requires UAC to change its configuration.
 
 Current development installers are **unsigned**. Free code signing has not been approved; see the [signing policy](docs/CODE_SIGNING.md). CI artifacts are test builds, not automatically published official releases. Verify source and download origin rather than disabling Windows protections.
 
@@ -35,7 +35,7 @@ Logs and configuration are local. Inspect technical logs for personal file paths
 
 ## Open source and support
 
-Licensed under [MIT](LICENSE). [Voluntary support](docs/SUPPORT.md) can help maintain and improve the project; no donation URL is configured yet. All functions are available without donating.
+Licensed under [MIT](LICENSE). [Sponsor deimisq on GitHub](https://github.com/sponsors/deimisq) to help maintain VolumeGuard and other open-source projects. All functions are available without donating. See [support details](docs/SUPPORT.md).
 
 Bug reports and contributions are welcome in Spanish or English. See [contribution guidance](CONTRIBUTING.md) and [security reporting](SECURITY.md).
 

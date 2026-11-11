@@ -15,4 +15,4 @@ dotnet publish src/VolumeGuard.Admin/VolumeGuard.Admin.csproj -c Release -r win-
 if ($LASTEXITCODE -ne 0) { throw 'Error al compilar panel' }
 & $compiler installer/VolumeGuard.iss
 if ($LASTEXITCODE -ne 0) { throw 'Error al generar instalador' }
-Write-Host 'Instalador listo en dist\VolumeGuard-Setup-1.0.2.exe'
+Write-Host 'Instalador listo en dist\VolumeGuard-Setup-1.0.3.exe'

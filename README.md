@@ -6,7 +6,7 @@ VolumeGuard limita el volumen maestro de los dispositivos de salida de Windows m
 
 **Distribución principal: instalador EXE con servicio administrativo.** Los binarios de desarrollo actuales no están firmados; la firma gratuita está pendiente de solicitud y aceptación. No desactives las protecciones de Windows para instalar archivos de origen desconocido.
 
-Código abierto bajo licencia MIT. Puedes [apoyar voluntariamente al creador](docs/SUPPORT.md); aún no hay enlace de donaciones configurado. Todas las funciones están disponibles sin aportar.
+Código abierto bajo licencia MIT. Puedes [apoyar voluntariamente al creador en GitHub Sponsors](https://github.com/sponsors/deimisq). Los aportes ayudan a mantener VolumeGuard y otros proyectos de código abierto. Todas las funciones están disponibles sin aportar.
 
 ## Preparación experimental para Microsoft Store (no se distribuye por esta vía)
 
@@ -28,7 +28,7 @@ Abre PowerShell en la carpeta raíz y ejecuta:
 powershell -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-El instalador se generará en `dist\VolumeGuard-Setup-1.0.2.exe`.
+El instalador se generará en `dist\VolumeGuard-Setup-1.0.3.exe`.
 Ejecuta el instalador como administrador. El acceso directo `VolumeGuard` abre el panel y solicita UAC.
 Antes de instalar se muestra un selector Español / English, con el idioma de Windows seleccionado de forma predeterminada (inglés si no es español). El panel y sus notificaciones usan el idioma elegido. Para cambiarlo, ejecuta de nuevo el instalador y selecciona el otro idioma. Si el panel ya está abierto, ciérralo desde su icono y ábrelo de nuevo después de actualizar.
 

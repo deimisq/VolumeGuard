@@ -138,6 +138,27 @@ internal sealed class MainForm : Form
         Add(page, TextLabel(L.T("Administración protegida con permisos de Windows.", "Administration protected by Windows permissions."), 9, FontStyle.Regular, Muted));
 #endif
 
+        var support = new LinkLabel
+        {
+            Text = L.T("Apoyar al creador en GitHub Sponsors", "Support the creator on GitHub Sponsors"),
+            AutoSize = true, Dock = DockStyle.Fill, Margin = new Padding(0, 14, 0, 0),
+            LinkColor = Accent, ActiveLinkColor = Accent, VisitedLinkColor = Accent,
+            LinkBehavior = LinkBehavior.HoverUnderline,
+            AccessibleDescription = L.T("Aporte voluntario. Abre GitHub en el navegador.", "Voluntary contribution. Opens GitHub in your browser.")
+        };
+        support.LinkClicked += (_, _) =>
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("https://github.com/sponsors/deimisq") { UseShellExecute = true });
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(L.T("No se pudo abrir el navegador. Visita https://github.com/sponsors/deimisq", "Could not open your browser. Visit https://github.com/sponsors/deimisq"), "VolumeGuard");
+            }
+        };
+        Add(page, support);
+
         savedLimit = previewLimit ?? ReadLimit();
         slider.Value = savedLimit;
         slider.ValueChanged += (_, _) => UpdateSelection();
