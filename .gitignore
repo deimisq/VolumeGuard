@@ -1,0 +1,17 @@
+**/bin/
+**/obj/
+publish/
+dist/
+artifacts/
+.preview/
+packaging/store/identity.local.json
+*.pfx
+*.p12
+*.key
+*.pem
+.env
+.env.*
+!.env.example
+*.user
+*.suo
+.vs/

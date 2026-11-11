@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings>
+    <DefineConstants>$(DefineConstants);STORE</DefineConstants>
+    <AssemblyName>VolumeGuard.Store</AssemblyName><RootNamespace>VolumeGuard.Admin</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>../VolumeGuard.Admin/Assets/VolumeGuard.ico</ApplicationIcon>
+    <Version>1.0.3</Version>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../VolumeGuard.Admin/Program.cs" Link="Program.cs" />
+    <Compile Include="../VolumeGuard.Admin/Language.cs" Link="Language.cs" />
+    <Compile Include="../VolumeGuard.Service/Program.cs" Link="VolumeEngine.cs" />
+    <EmbeddedResource Include="../VolumeGuard.Admin/Assets/VolumeGuard.ico" LogicalName="VolumeGuard.Admin.Assets.VolumeGuard.ico" />
+  </ItemGroup>
+</Project>

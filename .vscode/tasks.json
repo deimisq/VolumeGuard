@@ -1,0 +1,58 @@
+{
+    "version":  "2.0.0",
+    "tasks":  [
+                  {
+                      "label":  "Compilar instalador VolumeGuard",
+                      "type":  "shell",
+                      "command":  "powershell",
+                      "args":  [
+                                   "-NoProfile",
+                                   "-ExecutionPolicy",
+                                   "Bypass",
+                                   "-File",
+                                   "build.ps1"
+                               ],
+                      "problemMatcher":  [
+
+                                         ],
+                      "group":  "build"
+                  },
+                  {
+                      "label":  "Compilar Store MSIX",
+                      "type":  "shell",
+                      "command":  "powershell",
+                      "args":  [
+                                   "-NoProfile",
+                                   "-ExecutionPolicy",
+                                   "Bypass",
+                                   "-File",
+                                   "build-store.ps1",
+                                   "-IdentityFile",
+                                   "packaging/store/identity.local.json"
+                               ],
+                      "group":  "build",
+                      "problemMatcher":  [
+
+                                         ]
+                  },
+                  {
+                      "label":  "Compilar Store desarrollo",
+                      "type":  "shell",
+                      "command":  "powershell",
+                      "args":  [
+                                   "-NoProfile",
+                                   "-ExecutionPolicy",
+                                   "Bypass",
+                                   "-File",
+                                   "build-store.ps1",
+                                   "-IdentityFile",
+                                   "packaging/store/identity.development.json",
+                                   "-Development"
+                               ],
+                      "group":  "build",
+                      "problemMatcher":  [
+
+                                         ]
+                  }
+              ]
+}

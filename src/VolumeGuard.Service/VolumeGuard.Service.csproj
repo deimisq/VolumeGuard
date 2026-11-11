@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>VolumeGuard.Service</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup><PackageReference Include="System.ServiceProcess.ServiceController" Version="8.0.0" /></ItemGroup>
+</Project>
