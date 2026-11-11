@@ -1,57 +1,124 @@
-# VolumeGuard para Windows 11
+<div align="center">
+  <img src="src/VolumeGuard.Admin/Assets/VolumeGuard.svg" width="88" height="88" alt="Icono de VolumeGuard">
+  <h1>VolumeGuard</h1>
+  <p>Un límite de volumen para Windows, administrado por ti.</p>
+  <p>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/licencia-MIT-blue.svg" alt="Licencia MIT"></a>
+    <a href="installer/VolumeGuard.iss"><img src="https://img.shields.io/badge/versi%C3%B3n_del_c%C3%B3digo-1.0.3-2563eb.svg" alt="Versión del código 1.0.3"></a>
+    <a href="https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml"><img src="https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml/badge.svg" alt="Estado de compilación"></a>
+    <a href="https://github.com/sponsors/deimisq"><img src="https://img.shields.io/badge/GitHub_Sponsors-Apoyar-ea4aaa?logo=githubsponsors&amp;logoColor=white" alt="Apoyar a deimisq en GitHub Sponsors"></a>
+  </p>
+  <p>
+    <img src="https://img.shields.io/badge/Windows-11_x64-0078D4.svg" alt="Windows 11 x64">
+    <img src="https://img.shields.io/badge/.NET-8-512BD4.svg" alt=".NET 8">
+    <img src="https://img.shields.io/badge/idiomas-ES_%2F_EN-64748b.svg" alt="Español e inglés">
+  </p>
+  <p>
+    <strong>Español</strong> · <a href="README.en.md">English</a> ·
+    <a href="#instalación">Instalación</a> ·
+    <a href="https://github.com/sponsors/deimisq">Apoyar al creador</a> ·
+    <a href="CONTRIBUTING.md#español">Colaborar con código</a> ·
+    <a href="https://github.com/deimisq/VolumeGuard/issues">Reportar un problema</a>
+  </p>
+</div>
 
-[English](README.en.md) · [Licencia MIT](LICENSE) · [Contribuir](CONTRIBUTING.md) · [Code signing policy](docs/CODE_SIGNING.md)
+---
 
-VolumeGuard limita el volumen maestro de los dispositivos de salida de Windows mediante un servicio que arranca con el sistema. Incluye un panel en español e inglés y un icono en el área de notificación. Cerrar el panel no detiene el servicio.
+VolumeGuard mantiene el volumen maestro de los dispositivos de salida activos por debajo de un porcentaje elegido por el administrador. Su servicio arranca con Windows y continúa funcionando aunque cierres el panel.
 
-**Distribución principal: instalador EXE con servicio administrativo.** Los binarios de desarrollo actuales no están firmados; la firma gratuita está pendiente de solicitud y aceptación. No desactives las protecciones de Windows para instalar archivos de origen desconocido.
+## Qué puedes hacer
 
-Código abierto bajo licencia MIT. Puedes [apoyar voluntariamente al creador en GitHub Sponsors](https://github.com/sponsors/deimisq). Los aportes ayudan a mantener VolumeGuard y otros proyectos de código abierto. Todas las funciones están disponibles sin aportar.
+| Función | Cómo funciona |
+|---|---|
+| Elegir un límite | Usa la barra o pulsa el porcentaje para escribir un valor de 0 a 100. Guarda para aplicarlo. |
+| Mantener el control activo | El servicio se inicia automáticamente como LocalSystem. Cerrar el panel no lo detiene. |
+| Proteger la configuración | El panel solicita UAC y el instalador restringe los ajustes a administradores y SYSTEM. |
+| Ocultar el panel | Minimizar o pulsar la X lo deja junto al reloj. Doble clic en el icono lo abre de nuevo. |
+| Usar tu idioma | Instalador y panel en español e inglés; el instalador preselecciona el idioma de Windows. |
+| Consultar el estado | Muestra el límite aplicado y las incidencias del servicio. |
 
-## Preparación experimental para Microsoft Store (no se distribuye por esta vía)
+## Instalación
 
-Se incluye una edición Store por usuario, sin servicio ni elevación y activa solo mientras la app corre. La edición administrativa descrita abajo conserva sus funciones y su instalador EXE. Consulta la [guía en español](docs/store/README.es.md), la [guía en inglés](docs/store/README.en.md) y la [identidad de ejemplo](packaging/store/identity.example.json) antes de compilar con `build-store.ps1`. No enviar un paquete con identidad ficticia ni atribuir protección administrativa a la edición Store.
+**Todavía no hay una release publicada.** La versión del código es **1.0.3**; la insignia de versión no representa una descarga firmada ni una certificación.
 
-Proyecto fuente para un limitador de volumen administrado mediante servicio de Windows.
+Puedes compilar el instalador siguiendo las instrucciones de abajo. Las compilaciones automáticas de prueba están en [GitHub Actions](https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml), cuando terminan correctamente. No son publicaciones oficiales y sus artefactos pueden requerir iniciar sesión en GitHub.
 
-## Requisitos de compilación
+> **Firma pendiente:** los instaladores de desarrollo no están firmados. La solicitud de firma gratuita aún no ha sido aprobada. Consulta la [política de firma](docs/CODE_SIGNING.md).
 
-- Windows 11 x64
-- .NET 8 SDK (con acceso a NuGet para restaurar `System.ServiceProcess.ServiceController`)
-- Inno Setup 6
+1. Ejecuta el instalador como administrador y elige Español o English.
+2. Abre **VolumeGuard**, selecciona un porcentaje y pulsa **Guardar límite**.
+3. Comprueba el estado **Protección activa** y el límite aplicado.
 
-## Generar instalador
+La instalación crea un servicio de Windows y protege su carpeta de configuración. La desinstalación detiene y elimina el servicio. Para actualizar, cierra primero el panel desde el menú de su icono. Para cambiar el idioma, vuelve a ejecutar el instalador y elige el otro idioma.
 
-Abre PowerShell en la carpeta raíz y ejecuta:
+## Apoyar al creador
+
+[![Apoyar en GitHub Sponsors](https://img.shields.io/badge/Apoyar_a_deimisq-GitHub_Sponsors-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/deimisq)
+
+VolumeGuard es gratuito y de código abierto. Tu aporte voluntario ayuda a mantener este y otros proyectos de **deimisq**. **Todas las funciones están disponibles sin donar**; un aporte no compra soporte prioritario ni compromisos de entrega.
+
+Los pagos se realizan en GitHub, fuera de la app. [Más información sobre los aportes](docs/SUPPORT.md).
+
+## Colaborar con código o reportar errores
+
+| Quiero… | Dónde hacerlo |
+|---|---|
+| Aportar dinero al creador | [GitHub Sponsors](https://github.com/sponsors/deimisq) |
+| Corregir código o documentación | [Guía para colaborar](CONTRIBUTING.md#español) |
+| Reportar un problema o sugerir una mejora | [Issues de VolumeGuard](https://github.com/deimisq/VolumeGuard/issues) |
+| Comunicar una vulnerabilidad | [Política de seguridad](SECURITY.md) |
+
+Se aceptan incidencias y contribuciones en español e inglés. Elimina datos personales de los registros antes de compartirlos.
+
+## Compilar desde el código fuente
+
+**Requisitos:** Windows 11 x64, .NET SDK 8 o posterior e Inno Setup 6. La primera restauración de dependencias necesita acceso a NuGet.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\build.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-El instalador se generará en `dist\VolumeGuard-Setup-1.0.3.exe`.
-Ejecuta el instalador como administrador. El acceso directo `VolumeGuard` abre el panel y solicita UAC.
-Antes de instalar se muestra un selector Español / English, con el idioma de Windows seleccionado de forma predeterminada (inglés si no es español). El panel y sus notificaciones usan el idioma elegido. Para cambiarlo, ejecuta de nuevo el instalador y selecciona el otro idioma. Si el panel ya está abierto, ciérralo desde su icono y ábrelo de nuevo después de actualizar.
+Si Inno Setup está instalado en otra ubicación:
 
-## Funcionamiento
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -InnoSetupCompiler 'C:\Tools\Inno Setup 6\ISCC.exe'
+```
 
-- Servicio `VolumeGuard` con arranque automático como LocalSystem.
-- Revisión de dispositivos de salida activos cada ~120 ms y reducción al límite configurado.
-- Valor predeterminado: 40 %.
-- Configuración: `%ProgramData%\VolumeGuard\settings.json`, protegida por ACL del instalador.
-- La interfaz requiere elevación UAC. Los usuarios estándar no pueden modificar la configuración ni detener el servicio por los medios habituales.
-- Al minimizar el panel o pulsar la X, queda disponible en el área de notificación junto al reloj. Haz doble clic en el icono para abrirlo; su menú permite cerrar el panel sin detener el servicio. Windows puede agrupar el icono dentro del menú de iconos ocultos.
-- La configuración se relee automáticamente sin reiniciar el servicio.
-- El límite puede escribirse directamente en el campo numérico (0 a 100) o ajustarse con la barra. Ambos controles se sincronizan; pulsa Guardar límite para aplicarlo.
-- Si la configuración falta o es inválida, el servicio conserva el último límite válido leído durante su ejecución. Hasta leer el primero aplica 0 %. El instalador crea una configuración inicial de 40 % si no existe.
-- El panel muestra el estado comunicado por el servicio y avisa si lleva más de 10 segundos sin actualizarse. Guardar la configuración no confirma por sí solo que el audio esté protegido.
-- Los errores se guardan en `%ProgramData%\VolumeGuard\service.log`, con rotación a `service.log.old` al superar aproximadamente 1 MB y un máximo de una entrada por minuto. El estado se publica en `status.json` cada 2 segundos.
-- El instalador comprueba permisos, registro e inicio del servicio; las actualizaciones detienen el servicio antes de reemplazar sus archivos. Los fallos se detallan en `setup-error.log` dentro de la carpeta de instalación.
-- El instalador incorpora desinstalación que detiene y elimina el servicio.
+Resultado: `dist/VolumeGuard-Setup-1.0.3.exe`. También hay una tarea de compilación en VS Code y un [workflow de GitHub Actions](.github/workflows/build.yml).
 
-## Limitaciones importantes
+## Límites y compatibilidad
 
-- Se han compilado los ejecutables y el instalador y comprobado la interfaz. La instalación y el control real de audio deben validarse con los dispositivos y cuentas de destino antes de distribuir nuevas versiones.
-- El control aplica al volumen maestro de los dispositivos de salida activos. No controla amplificadores externos, controles físicos independientes, ni garantiza que nunca exista un pico breve superior al límite (sondeo de ~120 ms).
-- No es una barrera de seguridad contra otros administradores, cuentas SYSTEM ni arranque desde medios externos.
-- En algunos controladores de audio, el acceso a Core Audio desde un servicio en sesión 0 puede no funcionar; validar con los dispositivos de destino. Si ocurre, debe incorporarse un agente de audio por sesión de usuario controlado por el servicio.
-- El porcentaje de Windows no equivale a un límite de decibelios o de presión sonora segura.
+- Se comprueba el volumen aproximadamente cada **120 ms**: pueden existir picos breves por encima del límite.
+- El porcentaje de Windows **no equivale a decibelios ni garantiza una exposición acústica segura**.
+- No controla amplificadores externos ni controles físicos independientes.
+- No es una barrera contra administradores, SYSTEM o acceso al equipo desde otros medios de arranque.
+- Algunos controladores de audio pueden no funcionar desde un servicio en sesión 0. Valida los dispositivos de destino; esos casos necesitarían un agente por sesión de usuario.
+- Se han compilado los ejecutables y el instalador y comprobado la interfaz. Las nuevas versiones deben validarse mediante instalación y pruebas reales de audio antes de distribuirse.
+
+<details>
+<summary><strong>Configuración y diagnóstico</strong></summary>
+
+- Límite inicial: **40 %**.
+- Ajustes: `%ProgramData%\VolumeGuard\settings.json`; se releen sin reiniciar el servicio.
+- Si falla la lectura, se conserva el último límite válido. Hasta leer el primero se aplica **0 %**.
+- Estado: `status.json`, actualizado aproximadamente cada 2 segundos. El panel avisa tras más de 10 segundos sin actualización.
+- Registro local: `service.log`, con rotación a `service.log.old` al superar aproximadamente 1 MB; máximo una entrada por minuto.
+- Errores del instalador: `setup-error.log` en la carpeta de instalación.
+- Sin cuentas en línea, publicidad ni telemetría propia. Los registros técnicos pueden contener rutas con nombres de usuario.
+
+</details>
+
+<details>
+<summary><strong>Preparación experimental para Store</strong></summary>
+
+La distribución principal es el instalador EXE con servicio administrativo. Se conserva una edición Store experimental por usuario, sin servicio ni elevación, que solo controla el volumen mientras está abierta. **No se distribuye actualmente por Microsoft Store.**
+
+Consulta las [guías de preparación](docs/store/README.es.md) si necesitas estudiar esa variante. Sus APPX/MSIX de desarrollo usan una identidad ficticia y no deben enviarse a la tienda.
+
+</details>
+
+## Licencia y autoría
+
+[![Licencia MIT](https://img.shields.io/badge/licencia-MIT-blue.svg)](LICENSE)
+
+Creado y mantenido por [deimisq](https://github.com/deimisq). Código disponible bajo [licencia MIT](LICENSE). Consulta también la [política de firma](docs/CODE_SIGNING.md) y la [guía de seguridad](SECURITY.md).

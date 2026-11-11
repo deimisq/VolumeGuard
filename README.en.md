@@ -1,44 +1,124 @@
-# VolumeGuard for Windows 11
+<div align="center">
+  <img src="src/VolumeGuard.Admin/Assets/VolumeGuard.svg" width="88" height="88" alt="VolumeGuard icon">
+  <h1>VolumeGuard</h1>
+  <p>A Windows volume limit, managed by you.</p>
+  <p>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
+    <a href="installer/VolumeGuard.iss"><img src="https://img.shields.io/badge/source_version-1.0.3-2563eb.svg" alt="Source version 1.0.3"></a>
+    <a href="https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml"><img src="https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml/badge.svg" alt="Build status"></a>
+    <a href="https://github.com/sponsors/deimisq"><img src="https://img.shields.io/badge/GitHub_Sponsors-Sponsor-ea4aaa?logo=githubsponsors&amp;logoColor=white" alt="Sponsor deimisq on GitHub"></a>
+  </p>
+  <p>
+    <img src="https://img.shields.io/badge/Windows-11_x64-0078D4.svg" alt="Windows 11 x64">
+    <img src="https://img.shields.io/badge/.NET-8-512BD4.svg" alt=".NET 8">
+    <img src="https://img.shields.io/badge/languages-ES_%2F_EN-64748b.svg" alt="Spanish and English">
+  </p>
+  <p>
+    <a href="README.md">Español</a> · <strong>English</strong> ·
+    <a href="#installation">Installation</a> ·
+    <a href="https://github.com/sponsors/deimisq">Support the creator</a> ·
+    <a href="CONTRIBUTING.md#english">Contribute code</a> ·
+    <a href="https://github.com/deimisq/VolumeGuard/issues">Report an issue</a>
+  </p>
+</div>
 
-[Español](README.md) · [MIT license](LICENSE) · [Contributing](CONTRIBUTING.md) · [Code signing policy](docs/CODE_SIGNING.md)
+---
 
-VolumeGuard periodically checks the master volume of active Windows output devices and reduces it to an administrator-selected limit. The main distribution is a Windows installer that installs an automatically started LocalSystem service. Closing the UI does not stop that service.
+VolumeGuard keeps the master volume of active Windows output devices below an administrator-selected percentage. Its service starts with Windows and keeps running when the panel is closed.
 
 ## Features
 
-- Volume limit from 0 to 100 %, default 40 %.
-- Automatic service start with Windows and configuration protected by administrator/SYSTEM permissions.
-- Spanish and English installer and interface; installer language selector defaults to Windows UI language.
-- Slider or click-to-edit percentage; Enter confirms, Escape cancels, Save applies.
-- Notification area icon; minimizing or pressing X hides the panel. Tray menu exits the panel.
-- Local status and rotating technical error logs; no accounts, advertising or app-owned telemetry.
+| Feature | How it works |
+|---|---|
+| Choose a limit | Move the slider or click the percentage to enter 0–100. Save to apply. |
+| Keep control active | The LocalSystem service starts automatically. Closing the panel does not stop it. |
+| Protect settings | The panel requests UAC; settings are restricted to administrators and SYSTEM. |
+| Hide the panel | Minimize or press X to keep it in the notification area. Double-click its icon to reopen. |
+| Use your language | Spanish and English installer/UI; setup defaults to Windows display language. |
+| Check status | View the applied limit and service issues. |
 
-## Build
+## Installation
 
-Windows 11 x64, .NET SDK 8+ and Inno Setup 6 are required. Initial package restore requires access to NuGet.
+**No release has been published yet.** The source version is **1.0.3**; the version badge does not indicate a signed download or certification.
+
+Build the installer below, or inspect successful [GitHub Actions builds](https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml). CI artifacts are test builds, not official releases; downloading them may require GitHub sign-in.
+
+> **Signing pending:** development installers are unsigned. Free signing has not been approved. See the [code signing policy](docs/CODE_SIGNING.md).
+
+1. Run the installer as administrator and choose Español or English.
+2. Open **VolumeGuard**, choose a percentage and click **Save limit**.
+3. Check **Protection active** and the applied value.
+
+Installation creates a Windows service and protects its configuration folder. Uninstall stops/removes the service. Before updating, exit the panel from its tray menu. To change the UI language, run setup again and choose the other language.
+
+## Support the creator
+
+[![Sponsor on GitHub](https://img.shields.io/badge/Support_deimisq-GitHub_Sponsors-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/deimisq)
+
+VolumeGuard is free and open source. Voluntary contributions help **deimisq** maintain this and other projects. **All features remain available without donating.** Sponsorship does not purchase priority support or delivery commitments.
+
+Payments take place on GitHub, outside the app. [Learn more about contributions](docs/SUPPORT.md).
+
+## Contribute code or report issues
+
+| I want to… | Where to go |
+|---|---|
+| Support the creator financially | [GitHub Sponsors](https://github.com/sponsors/deimisq) |
+| Improve code or documentation | [Contribution guide](CONTRIBUTING.md#english) |
+| Report a bug or request a feature | [VolumeGuard issues](https://github.com/deimisq/VolumeGuard/issues) |
+| Report a vulnerability | [Security policy](SECURITY.md) |
+
+Reports and contributions are welcome in Spanish and English. Remove personal data from logs before sharing.
+
+## Build from source
+
+**Requirements:** Windows 11 x64, .NET SDK 8+ and Inno Setup 6. Initial dependency restore requires access to NuGet.
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1
-# Nonstandard Inno Setup location:
+```
+
+For a custom Inno Setup location:
+
+```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build.ps1 -InnoSetupCompiler 'C:\Tools\Inno Setup 6\ISCC.exe'
 ```
 
-Output: `dist/VolumeGuard-Setup-1.0.3.exe`. Run as administrator. Installation creates the VolumeGuard service and protects `%ProgramData%\VolumeGuard`; uninstall stops/removes the service. The panel requires UAC to change its configuration.
+Output: `dist/VolumeGuard-Setup-1.0.3.exe`. A VS Code build task and a [GitHub Actions workflow](.github/workflows/build.yml) are included.
 
-Current development installers are **unsigned**. Free code signing has not been approved; see the [signing policy](docs/CODE_SIGNING.md). CI artifacts are test builds, not automatically published official releases. Verify source and download origin rather than disabling Windows protections.
+## Limitations and compatibility
 
-## Limitations
+- Volume is checked approximately every **120 ms**, so brief peaks can occur.
+- Windows percentages **are not decibels and do not guarantee safe sound exposure**.
+- External amplifiers and independent hardware controls are not controlled.
+- It is not a barrier against administrators, SYSTEM or offline access.
+- Some audio drivers may not work from a session-0 service. Validate target devices; those cases would require a per-user-session agent.
+- Executables/installer have been compiled and the UI checked. New releases still require installation and live audio tests before distribution.
 
-Checks run approximately every 120 ms; brief peaks can occur. Windows volume percentages are not decibels or a guarantee of safe sound exposure. External amplifiers and independent physical volume controls are not controlled. Some audio drivers may not support Core Audio from session 0; verify the target hardware. A per-user-session audio agent would be needed if that limitation occurs. It is not a security barrier against administrators, SYSTEM or offline access.
+<details>
+<summary><strong>Configuration and diagnostics</strong></summary>
 
-Logs and configuration are local. Inspect technical logs for personal file paths before sharing. Installation and audio enforcement should be tested on a VM or dedicated machine before distribution.
+- Initial limit: **40 %**.
+- Settings: `%ProgramData%\VolumeGuard\settings.json`, reloaded without restarting the service.
+- Invalid/unreadable settings retain the last valid limit. Until the first successful read, **0 %** is applied.
+- Status: `status.json`, updated approximately every 2 seconds. The panel warns after over 10 seconds without updates.
+- Local log: `service.log`, rotated to `service.log.old` at approximately 1 MB, at most one entry per minute.
+- Installer errors: `setup-error.log` in the installation folder.
+- No online accounts, ads or app-owned telemetry. Technical logs may contain paths including user names.
 
-## Open source and support
+</details>
 
-Licensed under [MIT](LICENSE). [Sponsor deimisq on GitHub](https://github.com/sponsors/deimisq) to help maintain VolumeGuard and other open-source projects. All functions are available without donating. See [support details](docs/SUPPORT.md).
+<details>
+<summary><strong>Experimental Store preparation</strong></summary>
 
-Bug reports and contributions are welcome in Spanish or English. See [contribution guidance](CONTRIBUTING.md) and [security reporting](SECURITY.md).
+The main distribution is the EXE installer with an administrative service. A separate experimental Store edition runs per user without service/elevation and controls volume only while running. **It is not currently distributed through Microsoft Store.**
 
-## Experimental Store preparation
+See the [preparation guide](docs/store/README.en.md) to explore that variant. Development APPX/MSIX packages use a fake identity and must not be submitted to Store.
 
-The separate per-user Store project and [bilingual documentation](docs/store/README.en.md) are experimental. They do not provide the administrative service or tamper resistance and are not the current distribution path. Development APPX/MSIX packages use a fake identity and must not be submitted to Microsoft Store.
+</details>
+
+## License and authorship
+
+[![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+Created and maintained by [deimisq](https://github.com/deimisq). Available under the [MIT license](LICENSE). See the [code signing policy](docs/CODE_SIGNING.md) and [security policy](SECURITY.md).
