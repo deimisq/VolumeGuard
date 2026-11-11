@@ -3,6 +3,10 @@
   <h1>VolumeGuard</h1>
   <p>Un límite de volumen para Windows, administrado por ti.</p>
   <p>
+    <a href="https://github.com/deimisq/VolumeGuard/releases/download/v1.0.3/VolumeGuard-Setup-1.0.3.exe"><img src="https://img.shields.io/badge/Descargar_instalador-Windows_x64-2563eb?style=for-the-badge" alt="Descargar instalador VolumeGuard 1.0.3 para Windows x64"></a>
+  </p>
+  <p>Versión de prueba 1.0.3 · Sin firma digital · <a href="https://github.com/deimisq/VolumeGuard/releases/tag/v1.0.3">Notas y comprobación SHA256</a></p>
+  <p>
     <a href="LICENSE"><img src="https://img.shields.io/badge/licencia-MIT-blue.svg" alt="Licencia MIT"></a>
     <a href="installer/VolumeGuard.iss"><img src="https://img.shields.io/badge/versi%C3%B3n_del_c%C3%B3digo-1.0.3-2563eb.svg" alt="Versión del código 1.0.3"></a>
     <a href="https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml"><img src="https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml/badge.svg" alt="Estado de compilación"></a>
@@ -39,9 +43,11 @@ VolumeGuard mantiene el volumen maestro de los dispositivos de salida activos po
 
 ## Instalación
 
-**Todavía no hay una release publicada.** La versión del código es **1.0.3**; la insignia de versión no representa una descarga firmada ni una certificación.
+**[Descargar VolumeGuard-Setup-1.0.3.exe](https://github.com/deimisq/VolumeGuard/releases/download/v1.0.3/VolumeGuard-Setup-1.0.3.exe)** — instalador para Windows 11 x64, con .NET incluido.
 
-Puedes compilar el instalador siguiendo las instrucciones de abajo. Las compilaciones automáticas de prueba están en [GitHub Actions](https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml), cuando terminan correctamente. No son publicaciones oficiales y sus artefactos pueden requerir iniciar sesión en GitHub.
+La descarga pública está en [Releases → Assets](https://github.com/deimisq/VolumeGuard/releases/tag/v1.0.3), junto con `SHA256SUMS.txt`. No necesitas una cuenta de GitHub para descargarla. Es una **versión de prueba**: requiere validar instalación y audio con los dispositivos de destino. El hash permite comprobar la integridad; no sustituye una firma digital.
+
+También puedes compilar desde el código o consultar los artefactos de desarrollo en [GitHub Actions](https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml).
 
 > **Firma pendiente:** los instaladores de desarrollo no están firmados. La solicitud de firma gratuita aún no ha sido aprobada. Consulta la [política de firma](docs/CODE_SIGNING.md).
 

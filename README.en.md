@@ -3,6 +3,10 @@
   <h1>VolumeGuard</h1>
   <p>A Windows volume limit, managed by you.</p>
   <p>
+    <a href="https://github.com/deimisq/VolumeGuard/releases/download/v1.0.3/VolumeGuard-Setup-1.0.3.exe"><img src="https://img.shields.io/badge/Download_installer-Windows_x64-2563eb?style=for-the-badge" alt="Download VolumeGuard 1.0.3 Windows x64 installer"></a>
+  </p>
+  <p>Test release 1.0.3 · Digitally unsigned · <a href="https://github.com/deimisq/VolumeGuard/releases/tag/v1.0.3">Release notes and SHA256 verification</a></p>
+  <p>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
     <a href="installer/VolumeGuard.iss"><img src="https://img.shields.io/badge/source_version-1.0.3-2563eb.svg" alt="Source version 1.0.3"></a>
     <a href="https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml"><img src="https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml/badge.svg" alt="Build status"></a>
@@ -39,9 +43,11 @@ VolumeGuard keeps the master volume of active Windows output devices below an ad
 
 ## Installation
 
-**No release has been published yet.** The source version is **1.0.3**; the version badge does not indicate a signed download or certification.
+**[Download VolumeGuard-Setup-1.0.3.exe](https://github.com/deimisq/VolumeGuard/releases/download/v1.0.3/VolumeGuard-Setup-1.0.3.exe)** — Windows 11 x64 installer, .NET included.
 
-Build the installer below, or inspect successful [GitHub Actions builds](https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml). CI artifacts are test builds, not official releases; downloading them may require GitHub sign-in.
+The public download is under [Releases → Assets](https://github.com/deimisq/VolumeGuard/releases/tag/v1.0.3), alongside `SHA256SUMS.txt`. No GitHub account is required. This is a **test release**: installation and audio enforcement still require target-device validation. The hash checks integrity and does not replace a digital signature.
+
+You can also build from source or inspect development artifacts in [GitHub Actions](https://github.com/deimisq/VolumeGuard/actions/workflows/build.yml).
 
 > **Signing pending:** development installers are unsigned. Free signing has not been approved. See the [code signing policy](docs/CODE_SIGNING.md).
 
