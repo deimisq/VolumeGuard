@@ -30,6 +30,10 @@
 
 VolumeGuard mantiene el volumen maestro de los dispositivos de salida activos por debajo de un porcentaje elegido por el administrador. Su servicio arranca con Windows y continúa funcionando aunque cierres el panel.
 
+<p align="center">
+  <img src="docs/images/volumeguard-es.png" width="496" alt="Panel de VolumeGuard en español, con un límite del 70 % y protección activa en tres dispositivos de salida">
+</p>
+
 ## Qué puedes hacer
 
 | Función | Cómo funciona |

@@ -30,6 +30,11 @@
 
 VolumeGuard keeps the master volume of active Windows output devices below an administrator-selected percentage. Its service starts with Windows and keeps running when the panel is closed.
 
+<p align="center">
+  <img src="docs/images/volumeguard-es.png" width="496" alt="VolumeGuard Spanish interface showing a 70% limit and active protection on three output devices">
+  <br><sub>Spanish interface shown. English is also available.</sub>
+</p>
+
 ## Features
 
 | Feature | How it works |
